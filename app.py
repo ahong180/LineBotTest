@@ -125,7 +125,7 @@ def InsertExcel(type_, value_):
     spreadsheet_key = '1CRMSn60TB5ZuE6TNCML-wgmQYtjHuSjhmkHFdCsk3_w'
     # 建立工作表1
      sheet = gss_client.open_by_key(spreadsheet_key).sheet1
-     gss_client.open_by_key(spreadsheet_key).add_worksheet()
+     gss_client.open_by_key(spreadsheet_key).add_worksheet(today,5,5)
     # 自定義工作表名稱
     #sheet = gss_client.open_by_key(spreadsheet_key).worksheet(today)
     # Google Sheet 資料表操作(舊版)
