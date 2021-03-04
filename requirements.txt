@@ -1,4 +1,4 @@
 line-bot-sdk
 flask
 gspread
-ServiceAccountCredentials
+oauth2client
