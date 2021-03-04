@@ -39,42 +39,39 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-   line_bot_api.reply_message(  # 回復「選擇地區」按鈕樣板訊息
-                        event.reply_token,
-                        {
-  "type": "text", // ①
-  "text": "Select your favorite food category or send me your location!",
-  "quickReply": { // ②
-    "items": [
-      {
-        "type": "action", // ③
-        "imageUrl": "https://example.com/sushi.png",
-        "action": {
-          "type": "message",
-          "label": "Sushi",
-          "text": "Sushi"
-        }
-      },
-      {
-        "type": "action",
-        "imageUrl": "https://example.com/tempura.png",
-        "action": {
-          "type": "message",
-          "label": "Tempura",
-          "text": "Tempura"
-        }
-      },
-      {
-        "type": "action", // ④
-        "action": {
-          "type": "location",
-          "label": "Send location"
-        }
-      }
-    ]
-  }
-}
-                    )
+    # 開局
+    message = ""
+    if TextSendMessage(text=event.message.text) == "開局":
+    {
+       line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(
+                text='Quick reply',
+                quick_reply=QuickReply(
+                    items=[
+                        QuickReplyButton(
+                            action=PostbackAction(label="label1", data="data1")
+                        ),
+                        QuickReplyButton(
+                            action=MessageAction(label="label2", text="text2")
+                        ),
+                        QuickReplyButton(
+                            action=DatetimePickerAction(label="label3",
+                                                        data="data3",
+                                                        mode="date")
+                        ),
+                        QuickReplyButton(
+                            action=CameraAction(label="label4")
+                        ),
+                        QuickReplyButton(
+                            action=CameraRollAction(label="label5")
+                        ),
+                        QuickReplyButton(
+                            action=LocationAction(label="label6")
+                        ),
+                    ])))
+    }
+    
 #  Image 給
 #    message = TemplateSendMessage(
 #        alt_text='ImageCarousel template',
