@@ -41,8 +41,8 @@ def callback():
 def handle_message(event):
     # 開局
     text = event.message.text
-    line_bot_api.reply_message(event.reply_token, text)
-    if text == '開局':
+
+    if text == 'A':
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(
@@ -71,6 +71,8 @@ def handle_message(event):
                              action=LocationAction(label="label6")
                          ),
                      ])))
+     else:
+         line_bot_api.reply_message(event.reply_token, text)
 
 
 #  Image 給
@@ -101,7 +103,7 @@ def handle_message(event):
 
 #  你說什麼 BOT說什麼
 # message = TextSendMessage(text=event.message.text)
-#line_bot_api.reply_message(event.reply_token, message)
+# line_bot_api.reply_message(event.reply_token, message)
 
 
 if __name__ == "__main__":
