@@ -134,7 +134,7 @@ def InsertExcel(type_, value_, event):
     if (type_ == '1'):
         listtitle = sheet.row_values(1)  # 讀取第1列的一整列
         sheet.update_cell(1, len(listtitle)+1, value_)
-        if len(listtitle < 5):
+        if len(listtitle) < 5:
             quickreplay(event, len(listtitle)+1)
 
     # listtitle = ["姓名", value_]
