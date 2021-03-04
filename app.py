@@ -106,7 +106,7 @@ def quickreplay():
                     ])))
 
 # 寫入Google Excel
-def InsertExcel(type, value_):
+def InsertExcel(type_, value_):
     auth_json_path = 'A.json'
     gss_scopes = ['https://spreadsheets.google.com/feeds']
     # 連線
