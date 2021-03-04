@@ -71,8 +71,8 @@ def handle_message(event):
                          action=LocationAction(label="label6")
                      ),
                     ])))
-        else:
-            line_bot_api.reply_message(event.reply_token, text)
+    else:
+        line_bot_api.reply_message(event.reply_token, text)
 
 
 #  Image 給
