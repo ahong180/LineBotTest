@@ -133,10 +133,10 @@ def InsertExcel(type_, value_, event):
         sheet.update_cell(1, 1, value_)
     if (type_ == '1'):
         listtitle = sheet.row_values(1)  # 讀取第1列的一整列
-        sheet.update_cell(1, len(listtitle)+1, value_)
-        if len(listtitle) < 5:
+        sheet.update_cell(1, len(listtitle)+1, value_[3:])
+        if len(listtitle) < 4:
             quickreplay(event, len(listtitle)+1)
-
+        else:
     # listtitle = ["姓名", value_]
     # sheet.append_row(listtitle)  # 標題
     # listdata = ["Liu", "0912-345678"]
