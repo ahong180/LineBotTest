@@ -14,7 +14,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 # 日期
-import datetime
+#import datetime
 app = Flask(__name__)
 
 # Channel Access Token
@@ -114,7 +114,7 @@ def quickreplay(event):
 
 
 def InsertExcel(type_, value_):
-    today = datetime.date.today()
+    #today = datetime.date.today()
     auth_json_path = 'A.json'
     gss_scopes = ['https://spreadsheets.google.com/feeds']
     # 連線
