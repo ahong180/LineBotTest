@@ -89,7 +89,7 @@ def quickreplay(event, _index):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(
-            text='請選擇第' + _index + '人',
+            text='請選擇第' + str(_index) + '人',
             quick_reply=QuickReply(
                 items=[
                     QuickReplyButton(
