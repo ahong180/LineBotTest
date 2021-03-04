@@ -1,5 +1,5 @@
 import os
-import googleExcel
+from googleExcel
 from flask import Flask, request, abort
 
 from linebot import (
@@ -44,7 +44,7 @@ def handle_message(event):
     text = event.message.text
 
     if text == '開局':
-        InsertExcel(text)
+        googleExcel.InsertExcel(text)
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(
