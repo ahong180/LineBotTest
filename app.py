@@ -60,7 +60,7 @@ def handle_message(event):
                              label="label1", data="data1")
                      ),
                         QuickReplyButton(
-                         action=MessageAction(label="label2", text="text2")
+                         action=MessageAction(label="label2", text="t1ext2")
                      ),
                         QuickReplyButton(
                          action=DatetimePickerAction(label="label3",
