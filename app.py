@@ -39,31 +39,82 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TemplateSendMessage(
-        alt_text='ImageCarousel template',
-        template=ImageCarouselTemplate(
-            columns=[
-                ImageCarouselColumn(
-                    image_url='https://example.com/item1.jpg',
-                    action=PostbackTemplateAction(
-                        label='postback1',
-                        text='postback text1',
-                        data='action=buy&itemid=1'
-                    )
-                ),
-                ImageCarouselColumn(
-                    image_url='https://example.com/item2.jpg',
-                    action=PostbackTemplateAction(
-                        label='postback2',
-                        text='postback text2',
-                        data='action=buy&itemid=2'
-                    )
-                )
-            ]
-        )
-    )
-    line_bot_api.reply_message(event.reply_token, message)
-#message = TextSendMessage(text=event.message.text)
+    return client.replyMessage(replyToken,
+                               {
+                                   type: 'text',
+                                   text: 'Quick reply sample ?',
+                                   quickReply: {
+                                       items: [
+                                           {
+                                               type: 'action',
+                                               action: {
+                                                   type: 'postback',
+                                                   label: 'ithome Clarence 鐵人賽',
+                                                   data: 'action=url&item=clarence',
+                                                   text: 'ithome Clarence 鐵人賽'
+                                               }
+                                           },
+                                           {
+                                               type: 'action',
+                                               action: {
+                                                   type: 'message',
+                                                   label: 'ithome Clarence',
+                                                   text: 'https://ithelp.ithome.com.tw/users/20117701'
+                                               }
+                                           },
+                                           {
+                                               type: 'action',
+                                               action: {
+                                                   type: 'camera',
+                                                   label: 'Send camera'
+                                               }
+                                           },
+                                           {
+                                               type: 'action',
+                                               action: {
+                                                   type: 'cameraRoll',
+                                                   label: 'Send camera roll'
+                                               }
+                                           },
+                                           {
+                                               type: 'action',
+                                               action: {
+                                                   type: 'location',
+                                                   label: 'Send location'
+                                               }
+                                           }
+                                       ]
+                                   },
+                               }
+                               )
+#  Image 給
+#    message = TemplateSendMessage(
+#        alt_text='ImageCarousel template',
+#        template=ImageCarouselTemplate(
+#            columns=[
+#                ImageCarouselColumn(
+#                    image_url='https://example.com/item1.jpg',
+#                    action=PostbackTemplateAction(
+#                        label='postback1',
+#                        text='postback text1',
+#                        data='action=buy&itemid=1'
+#                    )
+#                ),
+#                ImageCarouselColumn(
+#                    image_url='https://example.com/item2.jpg',
+#                    action=PostbackTemplateAction(
+#                        label='postback2',
+#                        text='postback text2',
+#                        data='action=buy&itemid=2'
+#                    )
+#                )
+#            ]
+#        )
+#    )
+#    line_bot_api.reply_message(event.reply_token, message)
+
+#  你說什麼 BOT說什麼
+# message = TextSendMessage(text=event.message.text)
 #line_bot_api.reply_message(event.reply_token, message)
 
 
