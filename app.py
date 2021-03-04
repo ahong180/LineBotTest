@@ -48,11 +48,10 @@ def handle_message(event):
     # 開局
     text = event.message.text
     if text == '開局':
-        InsertExcel('0', text)
-        quickreplay(event)
+        InsertExcel('0', text, event)
+        quickreplay(event, 1)
     elif text[0:2] == '開局':
-        InsertExcel('1', text)
-        quickreplay(event)
+        InsertExcel('1', text, event)
     elif text == 'quickReplay':
         line_bot_api.reply_message(
             event.reply_token,
@@ -86,11 +85,11 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text))
 
 
-def quickreplay(event):
+def quickreplay(event, _index):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(
-            text='Quick reply',
+            text='請選擇第' + _index + '人',
             quick_reply=QuickReply(
                 items=[
                     QuickReplyButton(
@@ -113,7 +112,7 @@ def quickreplay(event):
 # 寫入Google Excel
 
 
-def InsertExcel(type_, value_):
+def InsertExcel(type_, value_, event):
     # today = datetime.date.today()
     auth_json_path = 'A.json'
     gss_scopes = ['https://spreadsheets.google.com/feeds']
@@ -135,6 +134,9 @@ def InsertExcel(type_, value_):
     if (type_ == '1'):
         listtitle = sheet.row_values(1)  # 讀取第1列的一整列
         sheet.update_cell(1, len(listtitle)+1, value_)
+        if len(listtitle < 5):
+            quickreplay(event, len(listtitle)+1)
+
     # listtitle = ["姓名", value_]
     # sheet.append_row(listtitle)  # 標題
     # listdata = ["Liu", "0912-345678"]
