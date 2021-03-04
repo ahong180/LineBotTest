@@ -124,32 +124,34 @@ def InsertExcel(type_, value_):
     # 開啟 Google Sheet 資料表
     spreadsheet_key = '1CRMSn60TB5ZuE6TNCML-wgmQYtjHuSjhmkHFdCsk3_w'
     # 建立工作表1
-     sheet = gss_client.open_by_key(spreadsheet_key).sheet1
-     gss_client.open_by_key(spreadsheet_key).add_worksheet(today,5,5)
+    sheet = gss_client.open_by_key(spreadsheet_key).sheet1
+    # gss_client.open_by_key(spreadsheet_key).add_worksheet(today,5,5)
     # 自定義工作表名稱
     #sheet = gss_client.open_by_key(spreadsheet_key).worksheet(today)
     # Google Sheet 資料表操作(舊版)
     # sheet.clear()  # 清除 Google Sheet 資料表內容
-    
+    if tpye_ = '0' | type_ = '1':
+        listtitle = sheet.row_values(1)  # 讀取第1列的一整列
+        sheet.update_cell(1, len(listtitle)+1, value_) 
 
-    listtitle = ["姓名", value_]
-    sheet.append_row(listtitle)  # 標題
-    listdata = ["Liu", "0912-345678"]
-    sheet.append_row(listdata)  # 資料內容
+    #listtitle = ["姓名", value_]
+    # sheet.append_row(listtitle)  # 標題
+    #listdata = ["Liu", "0912-345678"]
+    # sheet.append_row(listdata)  # 資料內容
     # Google Sheet 資料表操作(20191224新版)
-    sheet.update_acell('D2', 'ABC')  # D2加入ABC
-    sheet.update_cell(2, 4, 'ABC')  # D2加入ABC(第2列第4行即D2)
+    # sheet.update_acell('D2', 'ABC')  # D2加入ABC
+    # sheet.update_cell(2, 4, 'ABC')  # D2加入ABC(第2列第4行即D2)
     # 寫入一整列(list型態的資料)
-    values = ['A', 'B', 'C', 'D']
-    sheet.insert_row(values, 1)  # 插入values到第1列
+    #values = ['A', 'B', 'C', 'D']
+    # sheet.insert_row(values, 1)  # 插入values到第1列
     # 讀取儲存格
-    sheet.acell('B1').value
-    sheet.cell(1, 2).value
+    # sheet.acell('B1').value
+    #sheet.cell(1, 2).value
     # 讀取整欄或整列
-    sheet.row_values(1)  # 讀取第1列的一整列
-    sheet.col_values(1)  # 讀取第1欄的一整欄
+    # sheet.row_values(1)  # 讀取第1列的一整列
+    # sheet.col_values(1)  # 讀取第1欄的一整欄
     # 讀取整個表
-    sheet.get_all_values()
+    # sheet.get_all_values()
 
 #  Image 給
 #    message = TemplateSendMessage(
