@@ -41,30 +41,39 @@ def callback():
 def handle_message(event):
    line_bot_api.reply_message(  # 回復「選擇地區」按鈕樣板訊息
                         event.reply_token,
-                        TemplateSendMessage(
-                            alt_text='Buttons template',
-                            template=ButtonsTemplate(
-                                title='Menu',
-                                text='請選擇地區',
-                                actions=[
-                                    PostbackTemplateAction(
-                                        label='台北市',
-                                        text='台北市',
-                                        data='A&台北市'
-                                    ),
-                                    PostbackTemplateAction(
-                                        label='台中市',
-                                        text='台中市',
-                                        data='A&台中市'
-                                    ),
-                                    PostbackTemplateAction(
-                                        label='高雄市',
-                                        text='高雄市',
-                                        data='A&高雄市'
-                                    )
-                                ]
-                            )
-                        )
+                        {
+  "type": "text", // ①
+  "text": "Select your favorite food category or send me your location!",
+  "quickReply": { // ②
+    "items": [
+      {
+        "type": "action", // ③
+        "imageUrl": "https://example.com/sushi.png",
+        "action": {
+          "type": "message",
+          "label": "Sushi",
+          "text": "Sushi"
+        }
+      },
+      {
+        "type": "action",
+        "imageUrl": "https://example.com/tempura.png",
+        "action": {
+          "type": "message",
+          "label": "Tempura",
+          "text": "Tempura"
+        }
+      },
+      {
+        "type": "action", // ④
+        "action": {
+          "type": "location",
+          "label": "Send location"
+        }
+      }
+    ]
+  }
+}
                     )
 #  Image 給
 #    message = TemplateSendMessage(
