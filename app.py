@@ -46,7 +46,7 @@ def handle_message(event):
     # 開局
     text = event.message.text
     if text == '開局':
-        InsertExcel('1',text)
+        InsertExcel('1', text)
         quickreplay()
     elif text == 'quickReplay':
         line_bot_api.reply_message(
@@ -81,31 +81,33 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text))
 
 
-
 def quickreplay():
     line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(
-                text='Quick reply',
-                quick_reply=QuickReply(
-                    items=[
-                        QuickReplyButton(
-                         action=MessageAction(label="Hong", text="開局_Hong"),
-                         QuickReplyButton(
-                         action=MessageAction(label="Amilia", text="開局_Amilia"),
-                         QuickReplyButton(
-                         action=MessageAction(label="登寓", text="開局_登寓"),
-                         QuickReplyButton(
-                         action=MessageAction(label="陳彤", text="開局_陳彤"),
-                         QuickReplyButton(
-                         action=MessageAction(label="堉瑄", text="開局_堉瑄"),
-                         QuickReplyButton(
-                         action=MessageAction(label="狗哥", text="開局_狗哥"),
-                         QuickReplyButton(
-                         action=MessageAction(label="JILL", text="開局_JILL")
-                    ])))
+        event.reply_token,
+        TextSendMessage(
+            text='Quick reply',
+            quick_reply=QuickReply(
+                items=[
+                    QuickReplyButton(
+                        action=MessageAction(label="Hong", text="開局_Hong")),
+                    QuickReplyButton(
+                        action=MessageAction(label="Amilia", text="開局_Amilia")),
+                    QuickReplyButton(
+                        action=MessageAction(label="登寓", text="開局_登寓")),
+                    QuickReplyButton(
+                        action=MessageAction(label="陳彤", text="開局_陳彤")),
+                    QuickReplyButton(
+                        action=MessageAction(label="堉瑄", text="開局_堉瑄")),
+                    QuickReplyButton(
+                        action=MessageAction(label="狗哥", text="開局_狗哥")),
+                    QuickReplyButton(
+                        action=MessageAction(label="JILL", text="開局_JILL")
+                    )
+                ])))
 
 # 寫入Google Excel
+
+
 def InsertExcel(type_, value_):
     auth_json_path = 'A.json'
     gss_scopes = ['https://spreadsheets.google.com/feeds']
