@@ -42,7 +42,7 @@ def handle_message(event):
     # 開局
     text = event.message.text
 
-    if text == 'A':
+    if text == '開局':
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(
