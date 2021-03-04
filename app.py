@@ -9,6 +9,10 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+#googleExcel
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
 app = Flask(__name__)
 
 # Channel Access Token
