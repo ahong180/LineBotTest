@@ -39,54 +39,33 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    return client.replyMessage(event.reply_token,
-                               {
-                                   type: 'text',
-                                   text: 'Quick reply sample ?',
-                                   quickReply: {
-                                       items: [
-                                           {
-                                               type: 'action',
-                                               action: {
-                                                   type: 'postback',
-                                                   label: 'ithome Clarence 鐵人賽',
-                                                   data: 'action=url&item=clarence',
-                                                   text: 'ithome Clarence 鐵人賽'
-                                               }
-                                           },
-                                           {
-                                               type: 'action',
-                                               action: {
-                                                   type: 'message',
-                                                   label: 'ithome Clarence',
-                                                   text: 'https://ithelp.ithome.com.tw/users/20117701'
-                                               }
-                                           },
-                                           {
-                                               type: 'action',
-                                               action: {
-                                                   type: 'camera',
-                                                   label: 'Send camera'
-                                               }
-                                           },
-                                           {
-                                               type: 'action',
-                                               action: {
-                                                   type: 'cameraRoll',
-                                                   label: 'Send camera roll'
-                                               }
-                                           },
-                                           {
-                                               type: 'action',
-                                               action: {
-                                                   type: 'location',
-                                                   label: 'Send location'
-                                               }
-                                           }
-                                       ]
-                                   },
-                               }
-                               )
+   line_bot_api.reply_message(  # 回復「選擇地區」按鈕樣板訊息
+                        event.reply_token,
+                        TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                title='Menu',
+                                text='請選擇地區',
+                                actions=[
+                                    PostbackTemplateAction(
+                                        label='台北市',
+                                        text='台北市',
+                                        data='A&台北市'
+                                    ),
+                                    PostbackTemplateAction(
+                                        label='台中市',
+                                        text='台中市',
+                                        data='A&台中市'
+                                    ),
+                                    PostbackTemplateAction(
+                                        label='高雄市',
+                                        text='高雄市',
+                                        data='A&高雄市'
+                                    )
+                                ]
+                            )
+                        )
+                    )
 #  Image 給
 #    message = TemplateSendMessage(
 #        alt_text='ImageCarousel template',
