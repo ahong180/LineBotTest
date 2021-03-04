@@ -13,6 +13,8 @@ from linebot.models import *
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+# 日期
+import datetime
 app = Flask(__name__)
 
 # Channel Access Token
@@ -46,6 +48,9 @@ def handle_message(event):
     # 開局
     text = event.message.text
     if text == '開局':
+        InsertExcel('0', text)
+        quickreplay(event)
+    elif text[0:2] == '開局':
         InsertExcel('1', text)
         quickreplay(event)
     elif text == 'quickReplay':
@@ -109,6 +114,7 @@ def quickreplay(event):
 
 
 def InsertExcel(type_, value_):
+    today = datetime.date.today()
     auth_json_path = 'A.json'
     gss_scopes = ['https://spreadsheets.google.com/feeds']
     # 連線
@@ -118,13 +124,14 @@ def InsertExcel(type_, value_):
     # 開啟 Google Sheet 資料表
     spreadsheet_key = '1CRMSn60TB5ZuE6TNCML-wgmQYtjHuSjhmkHFdCsk3_w'
     # 建立工作表1
-    sheet = gss_client.open_by_key(spreadsheet_key).sheet1
+    # sheet = gss_client.open_by_key(spreadsheet_key).sheet1
     # 自定義工作表名稱
-    # sheet = gss_client.open_by_key(spreadsheet_key).worksheet('測試1')
+    sheet = gss_client.open_by_key(spreadsheet_key).worksheet(today)
     # Google Sheet 資料表操作(舊版)
     # sheet.clear()  # 清除 Google Sheet 資料表內容
+    
 
-    listtitle = ["姓A名", value_]
+    listtitle = ["姓名", value_]
     sheet.append_row(listtitle)  # 標題
     listdata = ["Liu", "0912-345678"]
     sheet.append_row(listdata)  # 資料內容
