@@ -137,6 +137,7 @@ def InsertExcel(type_, value_, event):
         if len(listtitle) < 4:
             quickreplay(event, len(listtitle)+1)
         else:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text))
     # listtitle = ["姓名", value_]
     # sheet.append_row(listtitle)  # 標題
     # listdata = ["Liu", "0912-345678"]
