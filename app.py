@@ -39,7 +39,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    return client.replyMessage(replyToken,
+    return client.replyMessage(event.reply_token,
                                {
                                    type: 'text',
                                    text: 'Quick reply sample ?',
