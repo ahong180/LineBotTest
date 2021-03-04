@@ -130,7 +130,7 @@ def InsertExcel(type_, value_):
     #sheet = gss_client.open_by_key(spreadsheet_key).worksheet(today)
     # Google Sheet 資料表操作(舊版)
     # sheet.clear()  # 清除 Google Sheet 資料表內容
-    if (type_ = '0') | (type_ = '1'):
+    if (type_ == '0') | (type_ == '1'):
         listtitle = sheet.row_values(1)  # 讀取第1列的一整列
         sheet.update_cell(1, len(listtitle)+1, value_) 
 
