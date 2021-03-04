@@ -40,7 +40,6 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     # 開局
-    message = ""
     if TextSendMessage(text=event.message.text) == '開局':
         line_bot_api.reply_message(
             event.reply_token,
