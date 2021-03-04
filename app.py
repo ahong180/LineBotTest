@@ -46,7 +46,7 @@ def handle_message(event):
     # 開局
     text = event.message.text
     if text == '開局':
-        InsertExcel(text)
+        InsertExcel('1',text)
         quickreplay()
     elif text == 'quickReplay':
         line_bot_api.reply_message(
