@@ -124,9 +124,10 @@ def InsertExcel(type_, value_):
     # 開啟 Google Sheet 資料表
     spreadsheet_key = '1CRMSn60TB5ZuE6TNCML-wgmQYtjHuSjhmkHFdCsk3_w'
     # 建立工作表1
-    # sheet = gss_client.open_by_key(spreadsheet_key).sheet1
+     sheet = gss_client.open_by_key(spreadsheet_key).sheet1
+     gss_client.open_by_key(spreadsheet_key).add_worksheet()
     # 自定義工作表名稱
-    sheet = gss_client.open_by_key(spreadsheet_key).worksheet(today)
+    #sheet = gss_client.open_by_key(spreadsheet_key).worksheet(today)
     # Google Sheet 資料表操作(舊版)
     # sheet.clear()  # 清除 Google Sheet 資料表內容
     
